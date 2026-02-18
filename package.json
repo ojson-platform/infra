@@ -1,0 +1,52 @@
+{
+  "name": "@ojson/infra",
+  "version": "1.0.0",
+  "description": "Shared dev infrastructure for ojson packages (ESLint, Prettier, TypeScript, Vitest)",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "exports": {
+    "./eslint": "./eslint.config.mjs",
+    "./prettier": "./prettier.config.mjs",
+    "./tsconfig/base": "./tsconfig/base.json",
+    "./tsconfig/build": "./tsconfig/build.json",
+    "./tsconfig/test": "./tsconfig/test.json",
+    "./vitest": "./vitest.config.mjs"
+  },
+  "bin": {
+    "ojson-infra": "./bin/cli.mjs",
+    "eslint": "./bin/eslint.cjs",
+    "prettier": "./bin/prettier.cjs",
+    "vitest": "./bin/vitest.cjs",
+    "tsc": "./bin/tsc.cjs",
+    "tsserver": "./bin/tsserver.cjs"
+  },
+  "scripts": {
+    "test": "vitest --run --config vitest.infra.config.mjs",
+    "test:watch": "vitest --config vitest.infra.config.mjs",
+    "test:coverage": "vitest --run --config vitest.infra.config.mjs --coverage"
+  },
+  "files": [
+    "bin",
+    "lib",
+    "migrations",
+    "eslint.config.mjs",
+    "prettier.config.mjs",
+    "vitest.config.mjs",
+    "tsconfig",
+    "CHANGELOG.md"
+  ],
+  "dependencies": {
+    "@eslint/js": "^9.39.2",
+    "@typescript-eslint/eslint-plugin": "^8.50.0",
+    "@typescript-eslint/parser": "^8.50.0",
+    "@vitest/coverage-v8": "^3.2.4",
+    "eslint": "^9.39.2",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-import": "^2.32.0",
+    "prettier": "^3.7.4",
+    "typescript": "^5.7.2",
+    "vitest": "^3.2.3"
+  }
+}
