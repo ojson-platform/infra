@@ -17,7 +17,6 @@ pnpm exec eslint --version
 pnpm exec prettier --version
 pnpm exec vitest --version
 pnpm exec tsc --version
-pnpm exec tsc --version
 ```
 
 **Bin precedence note:** if you install `eslint`/`prettier`/`vitest`/`typescript`/`ts-patch` directly in your package, pnpm may prefer those binaries over the ones shipped by `@ojson/infra`.
@@ -151,7 +150,6 @@ pnpm exec ojson-infra init
 This applies `@ojson/infra` migrations (tracked in `.infra.json`) and may create:
 
 - `eslint.config.js`, `prettier.config.js`, `vitest.config.mjs`, `tsconfig.json`
-- `.github/workflows/ci.yml`
 - `.agents/*` fragments and a managed section in `AGENTS.md`
 
 **ESLint Auto-Detection:**

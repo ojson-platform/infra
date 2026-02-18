@@ -11,14 +11,6 @@ This changelog is **migration-oriented**: every user-facing change in scaffoldin
 - **Notes**:
   - Existing files are **not overwritten** by default. Use `ojson-infra migrate --force` to overwrite managed files.
 
-## 0002_add_ci_workflow
-
-- **Title**: Add base CI workflow
-- **Changes**:
-  - Creates `.github/workflows/ci.yml` (single workflow) that runs `lint`, `format:check`, `test`, `build` using pnpm when scripts are present.
-- **Notes**:
-  - If the package does not use pnpm, adjust the workflow (or add lockfile detection improvements in a future migration).
-
 ## 0003_add_agents_fragments
 
 - **Title**: Add `.agents/` fragments and a managed section in `AGENTS.md`

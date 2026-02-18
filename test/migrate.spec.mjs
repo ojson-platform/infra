@@ -78,11 +78,9 @@ describe('migration engine', () => {
 
     expect(await exists(path.join(cwd, '.infra.json'))).toBe(true);
     expect(await exists(path.join(cwd, 'eslint.config.js'))).toBe(true);
-    expect(await exists(path.join(cwd, '.github', 'workflows', 'ci.yml'))).toBe(true);
     expect(await exists(path.join(cwd, '.agents', 'core.md'))).toBe(true);
     expect(first.appliedNow).toEqual([
       '0001_add_infra_configs',
-      '0002_add_ci_workflow',
       '0003_add_agents_fragments',
     ]);
 
