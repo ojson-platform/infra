@@ -5,6 +5,15 @@
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "skipLibCheck": true,
-    "lib": ["ES2020", "ES2021", "ES2022"]
+    "lib": ["ES2020", "ES2021", "ES2022"],
+    "rewriteRelativeImportExtensions": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "verbatimModuleSyntax": true
+  },
+  "_comment_transformerExample": {
+    "_description": "Example of how to configure custom transformer with @ojson/infra",
+    "_usage": "Uncomment and modify the plugins section below if you need custom transformers",
+    "_transformer": "Use 'plugins': [{ 'transform': './node_modules/@ojson/infra/lib/transformer.mjs', 'after': true }]"
   }
 }

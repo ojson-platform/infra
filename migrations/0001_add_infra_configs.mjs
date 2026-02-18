@@ -1,11 +1,12 @@
 import path from 'node:path';
 
 import {exists, writeTextFile} from '../lib/fileOps.mjs';
+import { detectWithModulesConfig } from '../lib/detectWithModules.mjs';
 
 const id = '0001_add_infra_configs';
 
 function contentEslint() {
-  return "export { default } from '@ojson/infra/eslint';\n";
+  return "// ESLint configuration with auto-detection of with-* modules\n// @ojson/infra automatically detects with-* patterns and applies architectural restrictions\nexport { default } from '@ojson/infra/eslint';\n";
 }
 
 function contentPrettier() {
@@ -41,7 +42,7 @@ export default {
   id,
   title: 'Add @ojson/infra config re-exports',
   description:
-    'Create config entry points in the package root (eslint, prettier, vitest) that re-export from @ojson/infra. Optionally add a base tsconfig.json extending @ojson/infra.',
+    'Create config entry points in the package root (eslint, prettier, vitest) that re-export from @ojson/infra. Optionally add a base tsconfig.json extending @ojson/infra. ESLint config now includes auto-detection for with-* modules and applies architectural restrictions automatically.',
   async apply({cwd, options}) {
     const dryRun = Boolean(options.dryRun);
     const mode = options.force ? 'overwrite' : 'skip';
@@ -52,6 +53,8 @@ export default {
     if (existingEslint && !options.force) {
       ops.push({status: 'skipped', filePath: path.join(cwd, 'eslint.config.js'), reason: `exists:${existingEslint}`});
     } else {
+      // Detect with-* modules and include information in operation
+      const withDetection = detectWithModulesConfig(cwd);
       ops.push(
         await writeTextFile({
           filePath: path.join(cwd, 'eslint.config.js'),
@@ -60,6 +63,9 @@ export default {
           dryRun,
         }),
       );
+      // Add info about with-* detection to the operation result
+      ops[ops.length - 1].withModulesDetected = withDetection.detected;
+      ops[ops.length - 1].detectionMessage = withDetection.message;
     }
 
     const existingPrettier = await anyExists(cwd, [

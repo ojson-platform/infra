@@ -8,11 +8,14 @@
   },
   "exports": {
     "./eslint": "./eslint.config.mjs",
+    "./eslint/base": "./eslint.base.mjs",
+    "./eslint/with-restrictions": "./eslint.with-restrictions.mjs",
     "./prettier": "./prettier.config.mjs",
     "./tsconfig/base": "./tsconfig/base.json",
     "./tsconfig/build": "./tsconfig/build.json",
     "./tsconfig/test": "./tsconfig/test.json",
-    "./vitest": "./vitest.config.mjs"
+    "./vitest": "./vitest.config.mjs",
+    "./transformer": "./lib/transformer.mjs"
   },
   "bin": {
     "ojson-infra": "./bin/cli.mjs",
@@ -32,6 +35,8 @@
     "lib",
     "migrations",
     "eslint.config.mjs",
+    "eslint.base.mjs",
+    "eslint.with-restrictions.mjs",
     "prettier.config.mjs",
     "vitest.config.mjs",
     "tsconfig",
@@ -46,6 +51,7 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import": "^2.32.0",
     "prettier": "^3.7.4",
+    "ts-patch": "^3.3.0",
     "typescript": "^5.7.2",
     "vitest": "^3.2.3"
   }
